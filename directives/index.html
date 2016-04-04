@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="app.js"></script>
+	
+	<title>AngularJS</title>
+
+	<style type="text/css">
+
+	.ng-invalid.ng-dirty {
+		border-color: #fa787e;
+	}
+
+	.ng-valid.ng-dirty {
+		border-color: #78fa89;
+	}
+
+	</style>
+
+</head>
+<body ng-controller="StoreController as store">
+
+
+
+<ul class="list-group">
+	<li class="list-group-item" ng-repeat="product in store.products | orderBy:'-price' ">
+		
+		<div product-title ng-import="'product-title.html'"></div>
+
+		<section ng-controller="PanelController as panel">
+			<ul class="nav nav-pills">
+				<li ng-class="{active: panel.isSelected(1)}">
+					<a href ng-click="panel.selectTab(1)">Descriptions</a>
+				</li>
+				<li ng-class="{active: panel.isSelected(2)}">
+					<a href ng-click="panel.selectTab(2)">Specifications</a>
+				</li>
+				<li ng-class="{active: panel.isSelected(3)}">
+					<a href ng-click="panel.selectTab(3)">Reviews</a>
+				</li>
+			</ul>
+		
+		<div class="panel" ng-show="panel.isSelected(1)" >
+			<h4>Descriptions</h4>
+			<p></p>
+			<blockquote>{{product.description}}</blockquote>
+			
+		</div>
+
+		<div class="panel" ng-show="panel.isSelected(2)" >
+			<h4>Specifications</h4>
+			<p></p>
+			<blockquote>{{product.specifications}}</blockquote>
+			
+		</div>
+
+		<div class="panel" ng-show="panel.isSelected(3)" >
+			<h4>Reviews</h4>
+
+
+			<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+
+				<blockquote>
+					<b>{{reviewCtrl.review.stars}} Starts </b>
+					{{reviewCtrl.review.body}}<br />
+					<cite>by: {{reviewCtrl.review.author}}</cite>
+				</blockquote>
+				<label>feedback: </label><br />
+				<select ng-model="reviewCtrl.review.stars" required>
+					<option value="1">1 star</option>
+					<option value="2">2 stars</option>
+					<option value="3">3 stars</option>
+					<option value="4">4 stars</option>
+					<option value="5">5 stars</option>
+				</select><br />
+				<label>comment: </label><br />
+				<textarea ng-model="reviewCtrl.review.body" placeholder="Write a text..." required></textarea><br />
+				<label>mail: </label><br />
+				<input type="email" ng-model="reviewCtrl.review.author" placeholder="your e-mail" required />
+				<input type="submit" value="Submit" /> <br />
+
+				<div>reviewForm is {{reviewForm.$valid}}</div>
+				
+			</form>
+			
+		</div>
+		</section>
+
+
+	</li>
+</ul>
+
+
+
+</body>
+</html>

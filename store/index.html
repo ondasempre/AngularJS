@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <script src="app.js"></script>
+	
+	<title></title>
+
+</head>
+<body ng-controller="StoreController as store">
+
+<!-- 
+<div>
+	<h1>Product name: {{store.products[0].name}}</h1>
+	<h2>$Product price: {{store.products[0].price}} </h2>
+	<p>Product desciption: {{store.products[0].description}} </p>
+	<button ng-show="store.products[0].canPurchase">Add to Cart</button>
+</div>
+
+<h />
+
+<div>
+	<h1>Product name: {{store.products[1].name}}</h1>
+	<h2>$Product price: {{store.products[1].price}} </h2>
+	<p>Product desciption: {{store.products[1].description}} </p>
+	<button ng-show="store.products[1].canPurchase">Add to Cart</button>
+</div>
+
+-->
+
+<div ng-repeat="product in store.products">
+	<h1>Product name: {{product.name}}</h1>
+	<h2>$Product price: {{product.price}} </h2>
+	<p>Product desciption: {{product.description}} </p>
+	<button ng-show="product.canPurchase">Add to Cart</button>
+	<h />
+</div>
+
+
+
+</body>
+</html>
