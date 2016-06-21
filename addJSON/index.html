@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="json">
+<head>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="app.js"></script>
+	
+	<title>AngularJS</title>
+
+
+</head>
+<body>
+<h1 align="center">AngularJS update JSON</h1>
+
+<div ng-controller="myCtrl">
+<div class="container">
+<form>
+    <div ng-repeat="lang in languages">
+      <label>{{lang.name}}</label>
+      <input type="range" min="0" max="5" ng-model="lang.value" >
+    </div>
+    <button ng-click="save()">Save</button>
+</form>
+</div>
+
+<div class="container">
+  <h2>Table</h2>
+  <p></p>            
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr class="info">
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="x in languages">
+        <td>{{x.name}}</td>
+        <td>{{x.value}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="container">
+  <p>{{msg}}</p>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+</body>
+</html>
